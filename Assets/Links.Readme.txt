@@ -1,0 +1,6 @@
+﻿https://docs.unity3d.com/Manual/SL-ShaderSemantics.html
+https://docs.unity3d.com/Manual/SL-SurfaceShaderExamples.html
+https://catlikecoding.com/unity/tutorials/
+https://thebookofshaders.com/
+https://github.com/stackgl/shader-school
+https://www.shadertoy.com/
