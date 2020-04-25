@@ -21,5 +21,5 @@ Material:
     m_TexEnvs: []
     m_Floats:
     - _Power: 1
-    - _Step: 0.66
+    - _Step: 0.5
     m_Colors: []

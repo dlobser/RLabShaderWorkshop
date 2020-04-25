@@ -20,6 +20,6 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Floats:
-    - _Wrap: 0.84
+    - _Wrap: 0.69
     m_Colors:
     - _LightDirection: {r: -0.48, g: 2.47, b: -0.98, a: 1}

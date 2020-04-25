@@ -4,6 +4,8 @@ Shader "Unlit/NoiseUV"
 {
     Properties
     {
+        _Data ("Data", vector) = (0,0,0,0)
+
     }
     SubShader
     {
@@ -19,7 +21,7 @@ Shader "Unlit/NoiseUV"
             #pragma multi_compile_fog
 
             #include "UnityCG.cginc"
-            #include "noise.cginc"
+            #include "noise3D.cginc"
 
             struct appdata
             {
@@ -35,7 +37,8 @@ Shader "Unlit/NoiseUV"
 
             };
 
-
+            float4 _Data;
+            
             v2f vert (appdata v)
             {
                 v2f o;
@@ -46,9 +49,7 @@ Shader "Unlit/NoiseUV"
 
             fixed4 frag (v2f i) : SV_Target
             {
-                float n1 = (snoise(float3(i.uv.x*30,i.uv.y*20,0))+1)*.5;
-
-                return n1;
+                return ((snoise(i.uv*30))+1)*.5;
             }
             ENDCG
         }

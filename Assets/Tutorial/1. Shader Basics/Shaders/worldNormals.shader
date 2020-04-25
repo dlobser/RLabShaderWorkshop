@@ -57,7 +57,7 @@ Shader "Unlit/worldNormals"
                 fixed4 col = tex2D(_MainTex, i.uv);
                 // apply fog
                 UNITY_APPLY_FOG(i.fogCoord, col);
-                return float4(i.normal,1);
+                return (i.normal.y+1)*.5;
             }
             ENDCG
         }

@@ -41,9 +41,9 @@
             {
                 float r = smoothstep(0,1,i.uv.x);
                 float s = saturate(sin(6.28*saturate((i.uv.y-r)*50)));
-                r*=(1-s);
-                float4 l = float4(s,0,0,1);
-                return r+l;
+                //r*=(1-s);
+                //float4 l = float4(s,0,0,1);
+                return lerp(r, float4(1,0,0,1),1-cos(6.28*saturate((i.uv.y-r)*50)));//r+l;
 
             }
             ENDCG

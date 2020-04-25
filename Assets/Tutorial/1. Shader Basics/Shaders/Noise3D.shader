@@ -4,12 +4,12 @@ Shader "Unlit/Noise3D"
 {
     Properties
     {
-        _MainTex ("Texture", 2D) = "white" {}
+
+
     }
     SubShader
     {
-        Tags { "RenderType"="Transparent" "Queue"="Transparent" }
-        Blend SrcAlpha OneMinusSrcAlpha
+        Tags { "RenderType"="Opaque" }
         LOD 100
 
         Pass
@@ -17,11 +17,9 @@ Shader "Unlit/Noise3D"
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
-            // make fog work
-            #pragma multi_compile_fog
 
             #include "UnityCG.cginc"
-            #include "noise.cginc"
+            #include "noise3D.cginc"
 
             struct appdata
             {
@@ -34,38 +32,22 @@ Shader "Unlit/Noise3D"
             struct v2f
             {
                 float2 uv : TEXCOORD0;
-                UNITY_FOG_COORDS(1)
                 float4 vertex : SV_POSITION;
                 float3 worldPosition : COLOR;
 
             };
-
-            sampler2D _MainTex;
-            float4 _MainTex_ST;
-
+            
             v2f vert (appdata v)
             {
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
-                o.uv = TRANSFORM_TEX(v.uv, _MainTex);
                 o.worldPosition = mul (unity_ObjectToWorld, v.vertex).xyz;
-                UNITY_TRANSFER_FOG(o,o.vertex);
                 return o;
             }
 
             fixed4 frag (v2f i) : SV_Target
             {
-                // sample the texture
-                fixed4 col = tex2D(_MainTex, i.uv);
-                float frequency = 3;
-                float amplitude = 1;
-                float3 blobs = float3(0,_Time.z,0);
-                float n1 = snoise(blobs+i.worldPosition*frequency*snoise(i.worldPosition)*.1)*amplitude;// (snoise(i.worldPosition*10)+1)*2.5;//(snoise(i.worldPosition*10)+1)*.5;
-                //float n2 = abs(snoise(i.worldPosition*2*n1*i.worldPosition.y));
-                // apply fog
-                //UNITY_APPLY_FOG(i.fogCoord, col);
-                //clip(n1);
-                return n1;
+                return (snoise(i.worldPosition*10)+1)*.5;
             }
             ENDCG
         }

@@ -40,8 +40,8 @@
             fixed4 frag (v2f i) : SV_Target
             {
                 float r = distance(float2(.5,.5),i.uv)*2;
-                r = sin(r*30);
-                r = abs(r);
+                //r = sin(r*30);
+                //r = abs(r);
                 float r2 = length((i.uv-(float2(.5,.5)))*2); 
                 //it's the same thing            
                 return r;

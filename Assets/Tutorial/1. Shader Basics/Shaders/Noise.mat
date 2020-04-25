@@ -24,4 +24,6 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
-    m_Colors: []
+    m_Colors:
+    - _Data: {r: 23.91, g: 2.9, b: 119.3, a: 2.49}
+    - _Data2: {r: 8.74, g: 0, b: 4.38, a: 0}

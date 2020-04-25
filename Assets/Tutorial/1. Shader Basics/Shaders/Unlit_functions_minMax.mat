@@ -20,6 +20,6 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Floats:
-    - _Max: 0.66
-    - _Min: 0.26
+    - _Max: 0.68
+    - _Min: 0.31
     m_Colors: []
